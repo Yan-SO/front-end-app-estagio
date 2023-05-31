@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 
 export default function LoginProfessor() {
-  const navigatio = useNavigation();
+  const navigation = useNavigation();
   
 
   return (
@@ -22,11 +22,13 @@ export default function LoginProfessor() {
         secureTextEntry
       />
 
-      <TouchableOpacity style={styles.button} >
+      <TouchableOpacity style={styles.button} 
+        onPress={()=> navigation.reset({index: 0, routes: [{ name: 'HomeProfessor' }],})}
+      >
         <Text style={styles.buttonText}>Entrar</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.button} onPress={() => navigatio.navigate('CadastroProfessor')}>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('CadastroProfessor')}>
         <Text style={styles.buttonText}>Cadastrar</Text>
       </TouchableOpacity>
     </View>
