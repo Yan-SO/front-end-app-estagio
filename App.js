@@ -1,12 +1,13 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import LoginAluno from './src/screens/alunos/login';
-import CadastroAluno from './src/screens/alunos/cadastro';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import Routes from './src/routes/routesPrincipal';
 
 export default function App() {
   
   return (
-    <CadastroAluno/>
+    <NavigationContainer>
+      <Routes />
+    </NavigationContainer>
   );
 }
 

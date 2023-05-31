@@ -1,9 +1,10 @@
 
+import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 
 export default function LoginAluno() {
-
+  const navigatio = useNavigation();
   
 
   return (
@@ -12,16 +13,20 @@ export default function LoginAluno() {
 
       <TextInput
         style={styles.input}
-        placeholder="Email"
+        placeholder="RA"
       />
 
       <TextInput
         style={styles.input}
-        placeholder="Password"
+        placeholder="Senha"
       />
 
       <TouchableOpacity style={styles.button} >
         <Text style={styles.buttonText}>Entrar</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity style={styles.button} onPress={() => navigatio.navigate('CadastroAluno')}>
+        <Text style={styles.buttonText}>Cadastrar</Text>
       </TouchableOpacity>
     </View>
   );
@@ -44,7 +49,7 @@ const styles = StyleSheet.create({
     width: '100%',
     backgroundColor:'#D3D3D3',
     height: 40,
-    borderColor: 'gray',
+    borderColor: '#808080',
     borderWidth: 1,
     marginBottom: 10,
     paddingHorizontal: 10,
@@ -53,7 +58,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#262b45',
     padding: 10,
     borderRadius: 5,
-    marginTop: 10,
+    marginTop: 30,
   },
   buttonText: {
     color: 'white',

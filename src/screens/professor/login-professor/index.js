@@ -1,22 +1,15 @@
-import React, { useState } from 'react';
+
+import { useNavigation } from '@react-navigation/native';
+import { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 
-export default function CadastroAluno () {
+export default function LoginProfessor() {
+  const navigatio = useNavigation();
   
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Cadastro para Alunos</Text>
-
-      <TextInput
-        style={styles.input}
-        placeholder="RA"
-      />
-
-      <TextInput
-        style={styles.input}
-        placeholder="Nome"
-      />
+      <Text style={styles.title}>Professor</Text>
 
       <TextInput
         style={styles.input}
@@ -26,19 +19,14 @@ export default function CadastroAluno () {
       <TextInput
         style={styles.input}
         placeholder="Senha"
-        
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Confirmação da senha"
-      />
-
-      <TextInput
-        style={styles.input}
-        placeholder="Email do professor"
+        secureTextEntry
       />
 
       <TouchableOpacity style={styles.button} >
+        <Text style={styles.buttonText}>Entrar</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity style={styles.button} onPress={() => navigatio.navigate('CadastroProfessor')}>
         <Text style={styles.buttonText}>Cadastrar</Text>
       </TouchableOpacity>
     </View>
@@ -60,18 +48,18 @@ const styles = StyleSheet.create({
   },
   input: {
     width: '100%',
-    height: 40,
-    borderColor: '#D3D3D3',
-    borderWidth: 1,
-    marginBottom: 20,
-    paddingHorizontal: 10,
     backgroundColor:'#D3D3D3',
+    height: 40,
+    borderColor: '#808080',
+    borderWidth: 1,
+    marginBottom: 10,
+    paddingHorizontal: 10,
   },
   button: {
+    backgroundColor: '#262b45',
     padding: 10,
     borderRadius: 5,
-    marginTop: 10,
-    backgroundColor: '#262b45',
+    marginTop: 30,
   },
   buttonText: {
     color: '#fff',

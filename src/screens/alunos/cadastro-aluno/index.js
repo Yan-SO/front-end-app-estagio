@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 
-export default function CadastroProfessor () {
+export default function CadastroAluno () {
   
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Cadastro para Alunos</Text>
@@ -15,7 +16,6 @@ export default function CadastroProfessor () {
       <TextInput
         style={styles.input}
         placeholder="Nome"
-        
       />
 
       <TextInput
@@ -26,6 +26,11 @@ export default function CadastroProfessor () {
       <TextInput
         style={styles.input}
         placeholder="Senha"
+        
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Confirmação da senha"
       />
 
       <TextInput
@@ -56,7 +61,7 @@ const styles = StyleSheet.create({
   input: {
     width: '100%',
     height: 40,
-    borderColor: '#D3D3D3',
+    borderColor: '#808080',
     borderWidth: 1,
     marginBottom: 20,
     paddingHorizontal: 10,

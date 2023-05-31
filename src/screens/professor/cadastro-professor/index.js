@@ -1,14 +1,22 @@
-
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 
-export default function LoginProfessor() {
-
+export default function CadastroProfessor () {
   
-
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Aluno</Text>
+      <Text style={styles.title}>Cadastro para Alunos</Text>
+
+      <TextInput
+        style={styles.input}
+        placeholder="RA"
+      />
+
+      <TextInput
+        style={styles.input}
+        placeholder="Nome"
+        
+      />
 
       <TextInput
         style={styles.input}
@@ -17,12 +25,16 @@ export default function LoginProfessor() {
 
       <TextInput
         style={styles.input}
-        placeholder="Password"
-        secureTextEntry
+        placeholder="Senha"
+      />
+
+      <TextInput
+        style={styles.input}
+        placeholder="Email do professor"
       />
 
       <TouchableOpacity style={styles.button} >
-        <Text style={styles.buttonText}>Entrar</Text>
+        <Text style={styles.buttonText}>Cadastrar</Text>
       </TouchableOpacity>
     </View>
   );
@@ -43,21 +55,21 @@ const styles = StyleSheet.create({
   },
   input: {
     width: '100%',
-    backgroundColor:'#D3D3D3',
     height: 40,
-    borderColor: '#b3b3b3',
+    borderColor: '#808080',
     borderWidth: 1,
-    marginBottom: 10,
+    marginBottom: 20,
     paddingHorizontal: 10,
+    backgroundColor:'#D3D3D3',
   },
   button: {
-    backgroundColor: '#262b45',
     padding: 10,
     borderRadius: 5,
     marginTop: 10,
+    backgroundColor: '#262b45',
   },
   buttonText: {
-    color: '#000',
+    color: '#fff',
     fontSize: 16,
     fontWeight: 'bold',
     textAlign: 'center',
