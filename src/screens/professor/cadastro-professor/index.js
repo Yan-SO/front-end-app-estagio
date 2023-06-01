@@ -5,7 +5,7 @@ export default function CadastroProfessor () {
   
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Cadastro para Alunos</Text>
+      <Text style={styles.title}>Cadastro para Professor</Text>
 
       <TextInput
         style={styles.input}
