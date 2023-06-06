@@ -1,57 +1,17 @@
 import { FlatList, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import ItemListaAlunos from "../../components/itemLista";
 import { AntDesign } from '@expo/vector-icons';
+import { meusAlunos } from "../../services/listar/meus_alunos";
+import { useContext, useEffect, useState } from "react";
+import { ProfessorContext } from "../../contexts/professor/professorContext";
 
 
-const lisata = {
-    content: [
-        {
-            id: 2,
-            RA: 2518,
-            nome: '2518',
-            senha: 'senhaDo2518',
-            email: '2518@gmail.com',
-            professor: 1
-        },
-        {
-            id: 3,
-            RA: 2564,
-            nome: 'jonny',
-            senha: 'senhaDojonny',
-            email: 'jonny@gmail.com',
-            professor: 1
-        }
-    ],
-    pageable: {
-        sort: {
-            empty: true,
-            sorted: false,
-            unsorted: true
-        },
-        offset: 0,
-        pageSize: 20,
-        pageNumber: 0,
-        unpaged: false,
-        paged: true
-    },
-    last: true,
-    totalElements: 2,
-    totalPages: 1,
-    size: 20,
-    number: 0,
-    sort: {
-        empty: true,
-        sorted: false,
-        unsorted: true
-    },
-    first: true,
-    numberOfElements: 2,
-    empty: false
-}
 
 export default function ListaMeusAlunos(){
-    const retorno = lisata.content;
     const styles = styleModelo();
+    const { idProfessor } = useContext(ProfessorContext);
+    const [lista, setLista]= useState([]);
+    const [resp, setResp]= useState({});
 
     const Footer =()=>{
         return <View style={styles.footerConteiner}>
@@ -66,10 +26,19 @@ export default function ListaMeusAlunos(){
         </View>
     };
 
+
+    async function buscarInfo(idProfessor){
+        const resp= await meusAlunos(idProfessor)
+        setLista(resp.content)
+        setResp(resp);
+    }
+    useEffect(()=>buscarInfo(idProfessor),[])
+
     return (
         <View>
             <FlatList 
-                data={retorno}
+                data={lista}
+
                 keyExtractor={(item)=> item.id}
                 renderItem={(item)=> <ItemListaAlunos item={item}/>}
                 ListFooterComponent={<Footer />}

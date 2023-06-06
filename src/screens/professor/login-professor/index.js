@@ -1,23 +1,25 @@
 
 import { useNavigation } from '@react-navigation/native';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import { verificaPraLoginProfessor } from '../../../services/login-api/login';
+import { ProfessorContext } from '../../../contexts/professor/professorContext';
 
 export default function LoginProfessor() {
   const navigation = useNavigation();
-  const [email,setEmail] = useState('');
+  const { setIdProfessor,setNomeProfessor, 
+    emailProfessor, setEmailProfessor,
+    senhaProfessor,setSenhaProfessor} = useContext(ProfessorContext);
   const [emailMensagem,setEmailMensagem] = useState('');
-  const [senha,setSenha] = useState('');
   const [senhaMensagem,setSenhaMensagem] = useState('');
   
   async function login (){
-    const resp = await verificaPraLoginProfessor(email, senha);
+    const resp = await verificaPraLoginProfessor(emailProfessor, senhaProfessor);
     setEmailMensagem('');
     setSenhaMensagem('');
     let r;
     let s;
-    if(email == ''){
+    if(emailProfessor == ''){
       setEmailMensagem('Por favor coloque o Email')
     }else if(resp?.email == 'err'){
       setEmailMensagem('O Email apresentado não existe')
@@ -26,7 +28,7 @@ export default function LoginProfessor() {
       r = true;
     }
     console.log(resp)
-    if(senha == ''){
+    if(senhaProfessor == ''){
       setSenhaMensagem('Por favor coloque a senha')
     }else if(resp?.senha == 'err'){
       setSenhaMensagem('A senha apresentado esta errada')
@@ -35,6 +37,10 @@ export default function LoginProfessor() {
       s= true;
     } 
     if(r && s){
+      setIdProfessor(resp.id);
+      setNomeProfessor(resp.nome);
+      setEmailProfessor(resp.email);
+      setSenhaProfessor(resp.senha);
       navigation.reset({index: 0, routes: [{ name: 'HomeProfessor' }],})
     }
 
@@ -49,16 +55,16 @@ export default function LoginProfessor() {
       <TextInput
         style={styles.input}
         placeholder="Email"
-        value={email}
-        onChangeText={(text)=>setEmail(text)}
+        value={emailProfessor}
+        onChangeText={(text)=>setEmailProfessor(text)}
         keyboardType='email-address'
       />
       <Text style={styles.erroTextNull}>{senhaMensagem}</Text>
       <TextInput
         style={styles.input}
         placeholder="Senha"
-        value={senha}
-        onChangeText={(text)=>setSenha(text)}
+        value={senhaProfessor}
+        onChangeText={(text)=>setSenhaProfessor(text)}
         //secureTextEntry
       />
 
@@ -106,5 +112,11 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     textAlign: 'center',
+  },
+  erroTextNull:{
+    fontSize:16,
+    fontWeight:'bold',
+    color:'#d40000',
+    paddingBottom:16,
   },
 });

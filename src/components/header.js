@@ -20,6 +20,9 @@ const styleModelo =()=>(StyleSheet.create({
         flexDirection:"row",
         padding:10,
         backgroundColor:'#8a8a8a',
+        borderBottomColor:'#5a5a5a',
+        borderBottomWidth:2,
+        marginBottom:16
     },
     backButton:{
         alignItems:"center",
@@ -30,5 +33,6 @@ const styleModelo =()=>(StyleSheet.create({
         fontSize: 24,
         fontWeight: 'bold',
         margin: 10,
+        
     },
 }));
