@@ -1,7 +1,8 @@
 import { useContext, useState } from "react";
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { ProfessorContext } from "../../../contexts/professor/professorContext";
-import { adicionarAluno } from "../../../services/adicionar/adicionar-atividades";
+import { adicionarAluno } from "../../../services/adicionar/adicionar-aluno";
+
 
 
 export default function AdicionarAluno(){
