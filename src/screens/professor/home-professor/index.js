@@ -36,7 +36,9 @@ export default function HomeProfessor(){
             <Button color={'#026600'} text={'Listar meus alunos'} 
                 onPress={()=> navigation.navigate('ListaMeus',{tipo:"Meus Alunos"})}
             />
-            <Button color={'#a60000'} text={'Remover aluno'} onPress={()=> {}}/>
+            <Button color={'#a60000'} text={'Remover aluno'} 
+                onPress={()=> navigation.navigate('ListaMeus',{tipo:"Apagar meus alunos"})}
+            />
             <Button color={'#5c3700'} text={'Adicionar Aluno'} 
                 onPress={()=>navigation.navigate('AdicionarAluno')}
             />

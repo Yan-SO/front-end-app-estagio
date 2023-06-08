@@ -21,9 +21,13 @@ export default function ApagarAtividade({route}){
     const data = formatarData(atividade.data);
     
     async function deletar(id){
-        await deletarAtividade(id);
+        const resp = await deletarAtividade(id);
+        console.log(resp);
+        // if(resp){
 
-        navigation.goBack();
+        // }else{
+        //     navigation.goBack();
+        // }
     }
 
 

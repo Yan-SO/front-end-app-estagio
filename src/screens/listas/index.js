@@ -54,11 +54,7 @@ export default function ListaMeus({route}){
                     />
                 </View>
             );
-
           }
-
-
-
         return (
             <View>
                 <FlatList 
@@ -78,7 +74,18 @@ export default function ListaMeus({route}){
           
             buscarInfo(idProfessor);
           }, [contador]);
-          
+          if(ehDe =="Apagar meus alunos"){
+              return (
+                  <View>
+                      <FlatList 
+                          data={lista}
+                          keyExtractor={(item)=> item.id}
+                          renderItem={(item)=> <ItemListaAlunos deletar={true} item={item}/>}
+                          ListFooterComponent={<Footer />}
+                      />
+                  </View>
+              );
+        }
         return (
             <View>
                 <FlatList 

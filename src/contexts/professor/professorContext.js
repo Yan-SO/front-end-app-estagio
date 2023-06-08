@@ -11,7 +11,8 @@ export function ProfessorProvider({children}){
     
     return (
         <ProfessorContext.Provider 
-        value={{idProfessor, setIdProfessor,
+        value={{
+            idProfessor, setIdProfessor,
             nomeProfessor, setNomeProfessor, 
             emailProfessor, setEmailProfessor,
             senhaProfessor,setSenhaProfessor

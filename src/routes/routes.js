@@ -6,6 +6,7 @@ import ListaMeus from "../screens/listas";
 import AdicionarAluno from "../screens/professor/adicionar-aluno";
 import CriarAtividade from "../screens/professor/criar-atividade";
 import ApagarAtividade from "../screens/professor/apagar-ativdade";
+import ApagarAlunoProfessor from "../screens/professor/apagar-aluno";
 
 
 
@@ -22,6 +23,7 @@ export default function Routes(){
             <Stack.Screen name="AdicionarAluno" component={AdicionarAluno} options={{headerShown:true, title:'Adicionar Aluno'}}/>
             <Stack.Screen name="CriarAtividade" component={CriarAtividade} options={{headerShown:true, title:'Criar Atividade'}}/>
             <Stack.Screen name="ApagarAtividade" component={ApagarAtividade} options={{headerShown:true, title:'Apagar Atividade'}}/>
+            <Stack.Screen name="ApagarAlunoProfessor" component={ApagarAlunoProfessor} options={{headerShown:true, title:'Remover o aluno das atividades'}}/>
         </Stack.Navigator>
     );
 }

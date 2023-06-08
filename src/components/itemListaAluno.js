@@ -1,10 +1,21 @@
+import { useNavigation } from "@react-navigation/native";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 
-export default function ItemListaAlunos({item}){
+export default function ItemListaAlunos({deletar,item}){
+    const navigation = useNavigation();
     const styles = styleModelo();
     const aluno = item.item
 
+    if(deletar){
+        return (
+            <TouchableOpacity style={styles.conteiner} onPress={()=> navigation.navigate('ApagarAlunoProfessor',{aluno:aluno})}>
+                <Text  style={styles.texto}>Nome: {aluno.nome}</Text>
+                <Text style={styles.texto}>RA: {aluno.RA}</Text>
+                <Text style={styles.texto}>Email: {aluno.email}</Text>
+            </TouchableOpacity>
+        );
+    }
     return (
         <TouchableOpacity style={styles.conteiner}>
             <Text  style={styles.texto}>Nome: {aluno.nome}</Text>
