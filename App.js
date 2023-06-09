@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import Routes from './src/routes/routes';
 import {SafeAreaView, StatusBar } from 'react-native';
 import { ProfessorProvider } from './src/contexts/professor/professorContext';
+import { AlunoProvider } from './src/contexts/aluno/alunoContext';
 
 export default function App() {
   
@@ -10,9 +11,11 @@ export default function App() {
     <SafeAreaView style={{flex:1}}>
       <StatusBar />
       <ProfessorProvider>
-        <NavigationContainer>
-          <Routes />
-        </NavigationContainer>
+        <AlunoProvider>
+          <NavigationContainer>
+            <Routes />
+          </NavigationContainer>
+        </AlunoProvider>
       </ProfessorProvider>
     </SafeAreaView>
   );

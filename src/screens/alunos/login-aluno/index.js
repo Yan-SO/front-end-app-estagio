@@ -1,26 +1,30 @@
 
 import { useNavigation } from '@react-navigation/native';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import { verificaPraLoginAluno } from '../../../services/login-api/login';
+import { AlunoContext } from '../../../contexts/aluno/alunoContext';
 
 export default function LoginAluno() {
   const styles = styleMetodos();
   const navigation = useNavigation();
-  const [ra,setRa] = useState('');
-  const [raMensagem,setRaMensagem] = useState('');
-  const [senha,setSenha] = useState('');
   const [senhaMensagem,setSenhaMensagem] = useState('');
+  const [raMensagem,setRaMensagem] = useState('');
+  const {
+    setIdAluno, setNomeAluno, 
+    raAluno, setRaAluno, setEmailAluno,
+    senhaAluno,setSenhaAluno
+  } = useContext(AlunoContext);
 
 
   async function login (){
-    const resp = await verificaPraLoginAluno(ra, senha);
+    const resp = await verificaPraLoginAluno(raAluno, senhaAluno);
     
     setRaMensagem('');
     setSenhaMensagem('');
     let r;
     let s;
-    if(ra == ''){
+    if(raAluno == ''){
       setRaMensagem('Por favor coloque o RA')
     }else if(resp?.RA == 'err'){
       setRaMensagem('O RA apresentado não existe')
@@ -28,7 +32,7 @@ export default function LoginAluno() {
       setRaMensagem('');
       r = true;
     }
-    if(senha == ''){
+    if(senhaAluno == ''){
       setSenhaMensagem('Por favor coloque a senha')
     }else if(resp?.senha == 'err'){
       setSenhaMensagem('A senha apresentado esta errada')
@@ -37,6 +41,9 @@ export default function LoginAluno() {
       s= true;
     } 
     if(r && s){
+      setIdAluno(resp?.id);
+      setNomeAluno(resp?.nome);
+      setEmailAluno(resp?.email);
       navigation.reset({index: 0, routes: [{ name: 'HomeAluno' }],})
     }
 
@@ -51,16 +58,16 @@ export default function LoginAluno() {
       <TextInput
         style={styles.input}
         placeholder="RA"
-        value={ra}
-        onChangeText={(text)=>setRa(text)}
+        value={raAluno}
+        onChangeText={(text)=>setRaAluno(text)}
         />
 
       <Text>{senhaMensagem}</Text>
       <TextInput
         style={styles.input}
         placeholder="Senha"
-        value={senha}
-        onChangeText={(text)=>setSenha(text)}
+        value={senhaAluno}
+        onChangeText={(text)=>setSenhaAluno(text)}
       />
 
       <TouchableOpacity style={styles.button} 
