@@ -23,7 +23,10 @@ export default function HomeAluno(){
                 {/* <Text style={styles.tabelaText}>Professor: {nomeProfessor}</Text> */}
                 {/* <Text style={styles.tabelaText}>Total de atividades acertadas: {totalAcertos}</Text> */}
             </View>
-            <Button color={'#a60000'} onPress={()=>{}} text={'Buscar Atividades'}/>
+            <Button color={'#0013b5'} onPress={()=>navigation.navigate('TodasAtividadesAluno')} text={'Todas as Atividades'}/>
+            <Button color={'#007d0f'} onPress={()=>{}} text={'Atividades feitas'}/>
+            <Button color={'#bd8700'} onPress={()=>navigation.navigate('AtividadeAFazer')} text={'Atividades para fazer'}/>
+            <Button color={'#b50202'} onPress={()=>{}} text={'Meus Professores'}/>
         </View>
     );
 }

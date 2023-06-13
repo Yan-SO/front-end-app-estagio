@@ -1,11 +1,11 @@
 import { FlatList, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { AntDesign } from '@expo/vector-icons';
-import { meusAlunos } from "../../services/listar/meus_alunos";
+import { meusAlunos } from "../../../services/listar/meus_alunos";
 import React, { useContext, useEffect, useState } from "react";
-import { ProfessorContext } from "../../contexts/professor/professorContext";
-import { minhasAtividades } from "../../services/listar/minhas_atividades";
-import ItemListaAtividades from "../../components/intemListaAtividades";
-import ItemListaAlunos from "../../components/itemListaAluno";
+import { ProfessorContext } from "../../../contexts/professor/professorContext";
+import { minhasAtividades } from "../../../services/listar/minhas_atividades_professor";
+import ItemListaAtividades from "../../../components/intemListaAtividades";
+import ItemListaAlunos from "../../../components/itemListaAluno";
 import { useFocusEffect } from "@react-navigation/native";
 
 
