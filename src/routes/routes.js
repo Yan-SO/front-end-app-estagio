@@ -9,6 +9,7 @@ import ApagarAtividade from "../screens/professor/apagar-ativdade";
 import ApagarAlunoProfessor from "../screens/professor/apagar-aluno";
 import ListaAtividadeAlunos from "../screens/alunos/listas-atividade-aluno";
 import AtividadeAFazer from "../screens/alunos/atividades-a-fazer";
+import RespondendoAtividade from "../screens/alunos/respondendo-atividade";
 
 
 
@@ -28,6 +29,7 @@ export default function Routes(){
             <Stack.Screen name="AtividadeAFazer" component={AtividadeAFazer} options={{headerShown:true, title:'Atividades a fazer'}}/>
             <Stack.Screen name="ApagarAtividade" component={ApagarAtividade} options={{headerShown:true, title:'Apagar Atividade'}}/>
             <Stack.Screen name="ApagarAlunoProfessor" component={ApagarAlunoProfessor} options={{headerShown:true, title:'Remover o aluno das atividades'}}/>
+            <Stack.Screen name="RespondendoAtividade" component={RespondendoAtividade} options={{headerShown:false}}/>
         </Stack.Navigator>
     );
 }

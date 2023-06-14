@@ -9,10 +9,9 @@ export default function ItemAtividadesAFazer({item}){
     console.log(atividade);
 
     return (
-        <TouchableOpacity style={styles.conteiner}>
+        <TouchableOpacity style={styles.conteiner} onPress={()=>navigation.navigate('RespondendoAtividade', {atividade:atividade})} >
             <Text  style={styles.texto}>titulo: {atividade.titulo}</Text>
             <Text style={styles.texto}>pergunta: {atividade.pergunta}</Text>
-            
         </TouchableOpacity>
     );
 }
