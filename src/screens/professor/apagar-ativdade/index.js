@@ -1,17 +1,9 @@
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import deletarAtividade from "../../../services/deletar/deletar-atividade";
 import { useNavigation } from "@react-navigation/native";
+import { formatarData } from "../../../services/formater/date-formater";
 
-function formatarData(data) {
-    const dataObj = new Date(data);
-    const hora = dataObj.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-    const dia = dataObj.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' });
-  
-    return {
-      hora,
-      dia,
-    };
-}
+
 
 export default function ApagarAtividade({route}){
     const navigation = useNavigation();
@@ -23,11 +15,7 @@ export default function ApagarAtividade({route}){
     async function deletar(id){
         const resp = await deletarAtividade(id);
         console.log(resp);
-        // if(resp){
-
-        // }else{
-        //     navigation.goBack();
-        // }
+        navigation.goBack();
     }
 
 
